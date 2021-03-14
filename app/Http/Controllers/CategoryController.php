@@ -55,7 +55,12 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $show=Category::find($category);
+        if(is_null($show)){
+        return response()->json('Record not found',400);
+        }
+        return response()->json($show, 200);
+
     }
 
     /**
@@ -66,9 +71,11 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        if($category){
-        return response()->json($category, 200);
+        $show=Category::find($category);
+        if(is_null($show)){
+        return response()->json('Record not found',400);
         }
+        return response()->json($show, 200);
         
     }
 
@@ -82,15 +89,15 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
 
-        // $this->validate($request ,[
-        //     'name'=>"required",
-        //      ]);
-        // $category->update([
+        $this->validate($request ,[
+            'name'=>"required",
+             ]);
+        $category->update([
 
-        //     'name'=>$request->name,
-        //     'slug'=> Str::slug($request->name),
-        // ]);
-        // return response()->json('success',200);
+            'name'=>$request->name,
+            'slug'=> Str::slug($request->name),
+        ]);
+        return response()->json('success',200);
     }
 
     /**

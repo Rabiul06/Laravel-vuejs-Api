@@ -52,7 +52,8 @@ updateCategory(){
 },
 loadCategory(){
     let id = this.$route.params.id;
-    axios.get('/api/category/${id}').then(response =>{
+    axios.get('/api/category/${id}/edit').then(response =>{
+        // console.log(response);
         this.categoryForm.name = response.data.name;
     });
 }
