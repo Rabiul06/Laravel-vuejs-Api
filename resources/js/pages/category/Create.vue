@@ -13,7 +13,7 @@
                  <form @submit.prevent="createCategory">
               <div class="form-group">
                 <label for="">Category Name</label>
-               <input type="text" v-model="categoryname" class="form-control" name="name" placeholder="categoryname">
+               <input type="text" v-model="categoryname" class="form-control" name="name" required="" placeholder="categoryname">
               </div>
                 <div class="form-group">
                <button type="submit" class="btn btn-success mb-3">Create Category</button>

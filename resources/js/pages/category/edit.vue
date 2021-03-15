@@ -33,35 +33,34 @@
 <script>
 import { Form } from 'vform'
 export default {
-data(){
-  return {
-    categoryForm: new Form({
-   name:'',
-    }),
-  }
-},
-methods:{
-updateCategory(){
-  this.categoryForm.put('/api/category/${id}').then(() =>{
-  
-    this.$toast.success({
-    title:'success',
-    message:'Category updated successfully!!'
-})
-  })
-},
-loadCategory(){
-    let id = this.$route.params.id;
-    axios.get('/api/category/${id}/edit').then(response =>{
-        // console.log(response);
-        this.categoryForm.name = response.data.name;
-    });
-}
-},
-mounted(){
-    this.loadCategory();
-}
-
+    data(){
+        return {
+            categoryForm: new Form({
+                name: '',
+            }),
+        }
+    },
+    methods: {
+        updateCategory(){
+            let id = this.$route.params.id;
+            this.categoryForm.put(`/api/category/${id}`).then(() => {
+                this.$toast.success({
+                    title:'Success!',
+                    message:'Category updated successfully.'
+                });
+            })
+        },
+        loadCategory(){
+            let id = this.$route.params.id;
+            
+            axios.get(`/api/category/${id}/edit`).then(response => {
+                this.categoryForm.name = response.data.name;
+            });
+        }
+    },
+    mounted(){
+        this.loadCategory();
+    }
 }
 </script>
 

@@ -14,6 +14,10 @@
         <li class="nav-item">
          <router-link class="navbar-brand" :to="{name: 'category'}">Product categgory</router-link>
         </li>
+        <li class="nav-item">
+          <router-link class="navbar-brand" :to="{name: 'productlist'}">Product List</router-link>
+        </li>
+        
         
       </ul>
      

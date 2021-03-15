@@ -4,8 +4,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">Product Categories</h5>
-                        <router-link :to="{name: 'Create'}" class="btn btn-primary">Create product</router-link>
+                        <h5 class="mb-0">Product List</h5>
+                        <router-link :to="{name: 'Createproduct'}" class="btn btn-primary">Creat Product</router-link>
                     </div>
 
                     <div class="card-body">
@@ -18,21 +18,21 @@
                                     <th style="width: 170px"> Action </th>
                                 </tr>
                             </thead>
-                            <tbody v-if="categories.length">
-                                <tr v-for="category in categories" :key="category.id">
+                            <tbody v-if="products.length">
+                                <tr v-for="product in products" :key="product.id">
                                     <td style="width: 100px"> {{ category.id }} </td>
-                                    <td> {{ category.name }} </td>
-                                    <td> {{ category.slug }} </td>
+                                    <td> {{ product.name }} </td>
+                                    <td> {{ product.slug }} </td>
                                     <td style="width: 170px">
-                                        <router-link :to="{name: 'edit', params: {id: category.id}}" class="btn btn-primary btn-sm">Edit</router-link>
-                                        <a @click.prevent="deleteCategory(category)" href="#" class="btn btn-danger btn-sm">Delete</a>
+                                        <router-link :to="{name: 'editproduct', params: {id: product.id}}" class="btn btn-primary btn-sm">Edit</router-link>
+                                        <a @click.prevent="deleteProduct(product)" href="#" class="btn btn-danger btn-sm">Delete</a>
                                     </td>
                                 </tr>
                             </tbody>
                             <tbody v-else>
                                 <tr>
                                     <td colspan="4">
-                                        <h5 class="text-center mt-4 mb-4">No categories found.</h5>
+                                        <h5 class="text-center mt-4 mb-4">No Product found.</h5>
                                     </td>
                                 </tr>
                             </tbody>
@@ -48,28 +48,28 @@
 export default {
     data(){
         return {
-            categories: [],
+            products: [],
         }
     },
     methods: {
-        loadCategories(){
-            axios.get('/api/category').then(response => {
+        loadProduct(){
+            axios.get('/api/product').then(response => {
                 this.categories = response.data;
             });
         },
-        deleteCategory(category){
-            axios.delete(`/api/category/${category.id}`).then(() => {
+        deleteProduct(product){
+            axios.delete(`/api/product/${product.id}`).then(() => {
                 this.$toast.success({
                     title:'Success!',
                     message:'Category deleted successfully.'
                 });
             });
-            let index = this.categories.indexOf(category);
+            let index = this.categories.indexOf(product);
             this.categories.splice(index, 1);
         }
     },
     mounted() {
-        this.loadCategories();
+        this.loadProduct();
     }
 }
 </script>

@@ -71,11 +71,11 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        $show=Category::find($category);
-        if(is_null($show)){
-        return response()->json('Record not found',400);
+        if($category){
+            return response()->json($category, 200);
+        }else {
+            return response()->json('failed', 404);
         }
-        return response()->json($show, 200);
         
     }
 
@@ -108,6 +108,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        if($category){
+            $category->delete();
+            return response()->json('success',200);
+        }
+        else{
+            return response()->json('failed', 404);
+        }
     }
 }
