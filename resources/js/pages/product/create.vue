@@ -22,7 +22,7 @@
              
               <div class="form-group">
                 <label for="">Product image</label>
-               <input type="file"  class="form-control-file" @change="onImageChange"  placeholder="categoryname">
+               <input type="file"  class="form-control-file" @change="onImageChange"   placeholder="categoryname">
               </div>
               <div class="form-group">
                 <label for="">Description</label>
@@ -47,19 +47,18 @@
 import { Form } from 'vform'
 import { objectToFormData } from 'object-to-formdata'
 export default {
-data(){
-  return {
- productForm: new Form({
-    title:'',
-    price: '',
-    image: '',
-    description: '',
-     }),
- }
-
-},
-methods:{
-createProduct(){
+    data(){
+        return {
+            productForm: new Form({
+                title: '',
+                price: '',
+                image: '',
+                description: '',
+            }),
+        }
+    },
+     methods: {
+        createProduct(){
             this.productForm.post('/api/product', {
                 transformRequest: [function (data, headers) {
                     return objectToFormData(data)
@@ -68,24 +67,25 @@ createProduct(){
                     // Do whatever you want with the progress event
                     console.log(e)
                 }
-            }).then(({ data })=>{
-      consol.loge(data);
-    // this.productForm.name='';
-    // this.$toast.success({
-    // title:'success',
-    // message:'Product Created successfully!!'
-//})
-  })
-},
- onImageChange(e){
+            }).then(({ data }) => {
+                this.productForm.title = '';
+                this.productForm.price = '';
+                this.productForm.image = '';
+                this.productForm.description = '';
+                this.$toast.success({
+                    title:'Success!',
+                    message:'Product Uploaded successfully.'
+                });
+            })
+        },
+        onImageChange(e){
             const file = e.target.files[0]
             // Do some client side validation...
             this.productForm.image = file
         }
-}
+    }
 }
 </script>
-
 <style>
 
 </style>

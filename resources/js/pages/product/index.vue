@@ -13,6 +13,7 @@
                             <thead>
                                 <tr>
                                     <th style="width: 100px"> Id </th>
+                                    <th> Image </th>
                                     <th> Name </th>
                                     <th> Slug </th>
                                     <th style="width: 170px"> Action </th>
@@ -20,8 +21,13 @@
                             </thead>
                             <tbody v-if="products.length">
                                 <tr v-for="product in products" :key="product.id">
-                                    <td style="width: 100px"> {{ category.id }} </td>
-                                    <td> {{ product.name }} </td>
+                                    <td style="width: 100px"> {{ product.id }} </td>
+                                    <td>
+                                        <div style="max-width: 150px; max-height: 150px; overflow:hidden">
+                                         <img :src="product.image" alt="" class="img-fluid">
+                                        </div>
+                                    </td>
+                                    <td> {{ product.title }} </td>
                                     <td> {{ product.slug }} </td>
                                     <td style="width: 170px">
                                         <router-link :to="{name: 'editproduct', params: {id: product.id}}" class="btn btn-primary btn-sm">Edit</router-link>
@@ -54,18 +60,18 @@ export default {
     methods: {
         loadProduct(){
             axios.get('/api/product').then(response => {
-                this.categories = response.data;
+                this.products = response.data;
             });
         },
         deleteProduct(product){
             axios.delete(`/api/product/${product.id}`).then(() => {
                 this.$toast.success({
                     title:'Success!',
-                    message:'Category deleted successfully.'
+                    message:'Product deleted successfully.'
                 });
             });
-            let index = this.categories.indexOf(product);
-            this.categories.splice(index, 1);
+            let index = this.products.indexOf(product);
+            this.products.splice(index, 1);
         }
     },
     mounted() {

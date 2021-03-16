@@ -14,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::latest()->get();
+        return response()->json($products, 200);
     }
 
     /**
@@ -76,9 +77,13 @@ class ProductController extends Controller
      * @param  \App\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function edit(cr $cr)
+    public function edit(Product $Product)
     {
-        //
+        if($Product){
+            return response()->json($Product, 200);
+        }else {
+            return response()->json('failed', 404);
+        }
     }
 
     /**
@@ -88,19 +93,46 @@ class ProductController extends Controller
      * @param  \App\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, cr $cr)
-    {
-        //
-    }
+    public function update(Request $request, Product $product)
+    {   
+        $this->validate($request, [
+            'title' => "required|max:255|unique:products,title, $product->id",
+            'price' => 'required|integer',
+            'image' => 'sometimes|nullable|image|max:2048',
+            'description' => 'required'
+        ]);
 
+        $product->update([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'price' => $request->price,
+            'description' => $request->description,
+        ]);
+
+        if($request->image){
+            $imageName = time().'_'. uniqid() .'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('storage/product'), $imageName);
+            $product->image = '/storage/product/' . $imageName;
+            $product->save();
+        }
+
+        return response()->json($product, 200);
+    }
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function destroy(cr $cr)
+    public function destroy(Product $Product)
     {
-        //
+        if($Product){
+            $Product->delete();
+            return response()->json('success',200);
+        }
+        else{
+            return response()->json('failed', 404);
+        }
     }
+    
 }

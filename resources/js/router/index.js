@@ -7,6 +7,7 @@ import Create from '../pages/category/Create.vue'
 import Edit from '../pages/category/edit.vue'
 import productlist from '../pages/product/index.vue'
 import Createproduct from '../pages/product/create.vue'
+import Editproduct from '../pages/product/edit.vue'
 const routes = new VueRouter({
     mode: 'history',
     linkExactActiveClass: 'active',
@@ -41,11 +42,11 @@ const routes = new VueRouter({
             component: Createproduct,
             name:'Createproduct',
         },
-        // {
-        //     path:'/product/edit',
-        //     component: Editproduct,
-        //     name:'editproduct',
-        // },
+        {
+            path:'/product/edit',
+            component: Editproduct,
+            name:'editproduct',
+        },
         
     ]
 });
