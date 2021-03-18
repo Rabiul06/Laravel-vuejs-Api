@@ -66,9 +66,13 @@ class ProductController extends Controller
      * @param  \App\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function show(cr $cr)
+    public function show(Product $product)
     {
-        //
+        $show=Product::find($product);
+        if(is_null($show)){
+        return response()->json('Record not found',400);
+        }
+        return response()->json($show, 200);
     }
 
     /**
@@ -95,12 +99,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {   
-        $this->validate($request, [
-            'title' => "required|max:255|unique:products,title, $product->id",
-            'price' => 'required|integer',
-            'image' => 'sometimes|nullable|image|max:2048',
-            'description' => 'required'
-        ]);
+        // $this->validate($request, [
+        //     'title' => "required|max:255|unique:products,title, $product->id",
+        //     'price' => 'required|integer',
+        //     'image' => 'sometimes|nullable|image|max:2048',
+        //     'description' => 'required'
+        // ]);
 
         $product->update([
             'title' => $request->title,

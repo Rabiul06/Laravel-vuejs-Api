@@ -2131,6 +2131,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -40121,7 +40122,26 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-10" }, [
         _c("div", { staticClass: "card" }, [
-          _vm._m(0),
+          _c(
+            "div",
+            {
+              staticClass:
+                "card-header d-flex justify-content-between alin-item-center"
+            },
+            [
+              _c("h5", [_vm._v("Create category")]),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { to: { name: "category" } }
+                },
+                [_vm._v("Product List")]
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "row" }, [
@@ -40170,7 +40190,7 @@ var render = function() {
                       })
                     ]),
                     _vm._v(" "),
-                    _vm._m(1)
+                    _vm._m(0)
                   ]
                 )
               ])
@@ -40182,25 +40202,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "card-header d-flex justify-content-between alin-item-center"
-      },
-      [
-        _c("h5", [_vm._v("Create category")]),
-        _vm._v(" "),
-        _c("a", { staticClass: "btn btn-primary ", attrs: { href: "#" } }, [
-          _vm._v("Category List")
-        ])
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -40251,11 +40252,15 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c(
-                "a",
-                { staticClass: "btn btn-primary ", attrs: { href: "#" } },
+                "router-link",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { to: { name: "edit" } }
+                },
                 [_vm._v("Category List")]
               )
-            ]
+            ],
+            1
           ),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -40498,7 +40503,26 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-10" }, [
         _c("div", { staticClass: "card" }, [
-          _vm._m(0),
+          _c(
+            "div",
+            {
+              staticClass:
+                "card-header d-flex justify-content-between alin-item-center"
+            },
+            [
+              _c("h5", [_vm._v("Create product")]),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { to: { name: "productlist" } }
+                },
+                [_vm._v("Product List")]
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "row" }, [
@@ -40636,7 +40660,7 @@ var render = function() {
                       })
                     ]),
                     _vm._v(" "),
-                    _vm._m(1)
+                    _vm._m(0)
                   ]
                 )
               ])
@@ -40648,25 +40672,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "card-header d-flex justify-content-between alin-item-center"
-      },
-      [
-        _c("h5", [_vm._v("Create product")]),
-        _vm._v(" "),
-        _c("a", { staticClass: "btn btn-primary ", attrs: { href: "#" } }, [
-          _vm._v("Product List")
-        ])
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -40705,7 +40710,26 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-10" }, [
         _c("div", { staticClass: "card" }, [
-          _vm._m(0),
+          _c(
+            "div",
+            {
+              staticClass:
+                "card-header d-flex justify-content-between alin-item-center"
+            },
+            [
+              _c("h5", [_vm._v("Edit product")]),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { to: { name: "productlist" } }
+                },
+                [_vm._v("Product List")]
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "row" }, [
@@ -40869,7 +40893,7 @@ var render = function() {
                       })
                     ]),
                     _vm._v(" "),
-                    _vm._m(1)
+                    _vm._m(0)
                   ]
                 )
               ])
@@ -40881,25 +40905,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "card-header d-flex justify-content-between alin-item-center"
-      },
-      [
-        _c("h5", [_vm._v("Edit product")]),
-        _vm._v(" "),
-        _c("a", { staticClass: "btn btn-primary ", attrs: { href: "#" } }, [
-          _vm._v("Product List")
-        ])
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

@@ -5,7 +5,8 @@
         <div class="card">
           <div class="card-header d-flex justify-content-between alin-item-center"> 
             <h5>Edit category -{{categoryForm.name}} </h5>
-            <a href="#" class="btn btn-primary ">Category List</a>
+           
+            <router-link :to="{name: 'edit'}" class="btn btn-primary">Category List</router-link>
           </div>
           <div class="card-body">
             <div class="row">

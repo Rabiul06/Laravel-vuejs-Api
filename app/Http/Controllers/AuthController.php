@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use JWTAuth;
+use JWTFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
@@ -24,16 +25,15 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function login(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
+{
+$credentials = $request->only('email', 'password');
 
-        if ($token = $this->guard()->attempt($credentials)) {
-            return $this->respondWithToken($token);
-        }
-
-        return response()->json(['error' => 'Unauthorized'], 401);
+    if ($token = $this->guard()->attempt($credentials)) {
+        return $this->respondWithToken($token);
     }
 
+    return response()->json(['error' => 'Unauthorized'], 401);
+}
     /**
      * Get the authenticated User
      *
@@ -78,7 +78,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => $this->guard()->factory()->getTTL() * 60
+            'expires_in' => JWTFactory::getTTL() * 60
         ]);
     }
 
@@ -89,6 +89,6 @@ class AuthController extends Controller
      */
     public function guard()
     {
-        return Auth::guard();
+        return Auth::guard('api');
     }
 }
